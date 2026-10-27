@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { X, MessageCircle, Check, Coffee, Package, Sparkles } from 'lucide-react';
+import { handleImageError } from '../assets/images';
 
 interface ProductModalProps {
   product: Product | null;
@@ -67,6 +68,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             <div className="rounded-[18px] overflow-hidden bg-[#F2D9D3]/30 border border-[#E9C4BC]/50 aspect-[4/3]">
               <img
                 src={product.image}
+                onError={(e) => handleImageError(e, '/images/hero_chipacitos_platter.jpg')}
                 alt={product.name}
                 className="w-full h-full object-cover"
                 loading="eager"

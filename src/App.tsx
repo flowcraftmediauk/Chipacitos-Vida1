@@ -17,6 +17,7 @@ import { ContactSection } from './components/ContactSection';
 import { LocationSection } from './components/LocationSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
+import { MobileActionBar } from './components/MobileActionBar';
 import { Product } from './types';
 
 export default function App() {
@@ -95,6 +96,12 @@ export default function App() {
 
       {/* 12. Footer */}
       <Footer onOrderClick={handleOrderClick} />
+
+      {/* 13. Mobile Bottom Action Bar & Floating WhatsApp */}
+      <MobileActionBar
+        onOrderClick={handleOrderClick}
+        customPhone={customPhone}
+      />
 
       {/* Product Detail & WhatsApp Order Modal */}
       <ProductModal

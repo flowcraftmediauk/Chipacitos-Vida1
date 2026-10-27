@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Product } from '../types';
 import { PRODUCTS } from '../data/products';
 import { MessageCircle, Eye, ArrowRight, Utensils } from 'lucide-react';
+import { handleImageError } from '../assets/images';
 
 interface FeaturedProductsProps {
   onSelectProduct: (product: Product) => void;
@@ -24,7 +25,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
     <section id="productos" className="py-16 sm:py-24 bg-[#FFF9F2] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 mb-2">
             <span className="w-5 h-px bg-[#B9824D]"></span>
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#B9824D]">
@@ -40,10 +41,10 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
           </p>
 
           {/* Category Filter Controls */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 bg-[#F2D9D3]/40 rounded-full max-w-md mx-auto border border-[#E9C4BC]/60">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8 p-1.5 bg-[#F2D9D3]/40 rounded-full max-w-md mx-auto border border-[#E9C4BC]/60">
             <button
               onClick={() => setActiveCategory('all')}
-              className={`px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                 activeCategory === 'all'
                   ? 'bg-[#49352F] text-white shadow-sm'
                   : 'text-[#49352F] hover:text-[#B9824D]'
@@ -53,7 +54,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
             </button>
             <button
               onClick={() => setActiveCategory('chipas')}
-              className={`px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                 activeCategory === 'chipas'
                   ? 'bg-[#49352F] text-white shadow-sm'
                   : 'text-[#49352F] hover:text-[#B9824D]'
@@ -63,7 +64,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
             </button>
             <button
               onClick={() => setActiveCategory('rellenos')}
-              className={`px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                 activeCategory === 'rellenos'
                   ? 'bg-[#49352F] text-white shadow-sm'
                   : 'text-[#49352F] hover:text-[#B9824D]'
@@ -73,7 +74,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
             </button>
             <button
               onClick={() => setActiveCategory('dulces')}
-              className={`px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 cursor-pointer ${
                 activeCategory === 'dulces'
                   ? 'bg-[#49352F] text-white shadow-sm'
                   : 'text-[#49352F] hover:text-[#B9824D]'
@@ -85,7 +86,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
         </div>
 
         {/* Product Cards Grid - Inspired by uploaded reference */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-9">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-9">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
@@ -93,9 +94,10 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
             >
               {/* Image Container with pastel background styling */}
               <div className="relative aspect-[4/3] bg-gradient-to-b from-[#F2D9D3]/40 to-[#FFF9F2] overflow-hidden p-3.5">
-                <div className="w-full h-full rounded-[16px] overflow-hidden bg-white shadow-inner relative">
+                <div className="w-full h-full rounded-[16px] overflow-hidden bg-[#F2D9D3]/20 shadow-inner relative">
                   <img
                     src={product.image}
+                    onError={(e) => handleImageError(e, '/images/hero_chipacitos_platter.jpg')}
                     alt={product.name}
                     className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-500 ease-out"
                     loading="lazy"

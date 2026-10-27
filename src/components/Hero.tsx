@@ -1,9 +1,11 @@
 import React from 'react';
-import { ArrowDown, MapPin, Sparkles } from 'lucide-react';
+import { ArrowDown, MapPin, Sparkles, MessageCircle } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/products';
+import { IMAGES, handleImageError } from '../assets/images';
 
 interface HeroProps {
   onExploreProducts: () => void;
+  onDirectOrder?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExploreProducts }) => {
@@ -77,9 +79,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProducts }) => {
               {/* Main Image Container */}
               <div className="relative rounded-[28px] overflow-hidden bg-white shadow-xl shadow-[#49352F]/10 border border-[#E9C4BC]/70 group">
                 <img
-                  src="/src/assets/images/hero_chipacitos_platter_1793084496201.jpg"
+                  src={IMAGES.hero}
+                  onError={(e) => handleImageError(e, '/images/hero_chipacitos_platter.jpg')}
                   alt="Plato de chipacitos de queso artesanales recién horneados sobre mantel rosa pastel"
-                  className="w-full h-[380px] sm:h-[460px] lg:h-[500px] object-cover object-center transform group-hover:scale-102 transition-transform duration-700 ease-out"
+                  className="w-full h-[320px] sm:h-[440px] lg:h-[500px] object-cover object-center transform group-hover:scale-102 transition-transform duration-700 ease-out"
                   loading="eager"
                   referrerPolicy="no-referrer"
                 />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, X, ZoomIn } from 'lucide-react';
+import { IMAGES, handleImageError } from '../assets/images';
 
 export const FoodGallery: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<{
@@ -7,11 +8,13 @@ export const FoodGallery: React.FC = () => {
     title: string;
     caption: string;
     alt: string;
+    fallback: string;
   } | null>(null);
 
   const galleryItems = [
     {
-      src: '/src/assets/images/product_chipa_relleno_1793084497800.jpg',
+      src: IMAGES.chipaRelleno,
+      fallback: '/images/product_chipa_relleno.jpg',
       title: 'Corazón Fundido',
       caption: 'Chipá partido al medio revelando el queso caliente y fundente.',
       alt: 'Chipá artesanal caliente abierto al medio con queso mozzarella fundido',
@@ -20,7 +23,8 @@ export const FoodGallery: React.FC = () => {
       height: 'h-80 sm:h-full min-h-[300px]',
     },
     {
-      src: '/src/assets/images/hero_chipacitos_platter_1793084496201.jpg',
+      src: IMAGES.hero,
+      fallback: '/images/hero_chipacitos_platter.jpg',
       title: 'Plato Recién Horneado',
       caption: 'Bandeja de chipacitos humeantes con costra dorada.',
       alt: 'Bandeja de chipacitos recién horneados humeantes sobre vajilla blanca',
@@ -29,7 +33,8 @@ export const FoodGallery: React.FC = () => {
       height: 'h-64 sm:h-64',
     },
     {
-      src: '/src/assets/images/product_medialunas_pastry_1793084498778.jpg',
+      src: IMAGES.medialunas,
+      fallback: '/images/product_medialunas_pastry.jpg',
       title: 'Hojaldre y Dulzor',
       caption: 'Medialunas de manteca brillantes con sutil almíbar.',
       alt: 'Medialunas caseras de manteca con brillo de almíbar recién salidas',
@@ -38,7 +43,8 @@ export const FoodGallery: React.FC = () => {
       height: 'h-64 sm:h-64',
     },
     {
-      src: '/src/assets/images/product_pasteleria_alfajores_1793084556077.jpg',
+      src: IMAGES.alfajores,
+      fallback: '/images/product_pasteleria_alfajores.jpg',
       title: 'Dulzura Tradicional',
       caption: 'Alfajorcitos de maicena caseros con coco rallado y dulce de leche.',
       alt: 'Alfajores de maicena rellenos de abundante dulce de leche con coco rallado',
@@ -47,7 +53,8 @@ export const FoodGallery: React.FC = () => {
       height: 'h-64 sm:h-64',
     },
     {
-      src: '/src/assets/images/chipa_herbs_close_up_1793084531522.jpg',
+      src: IMAGES.chipaHerbs,
+      fallback: '/images/chipa_herbs_close_up.jpg',
       title: 'Corteza y Textura',
       caption: 'Textura macro de la masa dorada y hierbas serranas.',
       alt: 'Primer plano de chipacito con costra crocante gratinada con orégano y queso',
@@ -86,6 +93,7 @@ export const FoodGallery: React.FC = () => {
             >
               <img
                 src={item.src}
+                onError={(e) => handleImageError(e, item.fallback)}
                 alt={item.alt}
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                 loading="lazy"
@@ -127,6 +135,7 @@ export const FoodGallery: React.FC = () => {
             <div className="aspect-[4/3] w-full bg-black">
               <img
                 src={selectedPhoto.src}
+                onError={(e) => handleImageError(e, selectedPhoto.fallback)}
                 alt={selectedPhoto.alt}
                 className="w-full h-full object-contain"
               />

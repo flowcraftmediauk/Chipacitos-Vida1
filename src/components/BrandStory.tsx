@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Heart, Sparkles, ArrowRight } from 'lucide-react';
+import { IMAGES, handleImageError } from '../assets/images';
 
 interface BrandStoryProps {
   onVisitLocation: () => void;
@@ -21,7 +22,8 @@ export const BrandStory: React.FC<BrandStoryProps> = ({ onVisitLocation }) => {
 
             <div className="relative rounded-[24px] overflow-hidden shadow-xl border border-[#E9C4BC]/80 bg-white">
               <img
-                src="/src/assets/images/chipa_herbs_close_up_1793084531522.jpg"
+                src={IMAGES.chipaHerbs}
+                onError={(e) => handleImageError(e, '/images/chipa_herbs_close_up.jpg')}
                 alt="Chipacitos artesanales dorados con hierbas recién salidos del horno sobre plato cerámico"
                 className="w-full h-[360px] sm:h-[440px] object-cover"
                 loading="lazy"
