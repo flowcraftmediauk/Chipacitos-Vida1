@@ -1,0 +1,6 @@
+{
+  "name": "Chipacitos Vida | Panadería y Chipá Artesanal en Jujuy",
+  "description": "El sabor de lo hecho con cariño. Chipacitos recién horneados, panificados artesanales y bocados para compartir en San Salvador de Jujuy, Argentina.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
